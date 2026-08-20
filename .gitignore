@@ -6,5 +6,6 @@ dist/
 build/
 *.spec
 .pytest_cache/
+*.egg-info/
 config.json
 *.tar.gz
