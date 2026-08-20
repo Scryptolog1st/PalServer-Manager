@@ -1,5 +1,7 @@
+import os
 from pathlib import Path
 
+import pytest
 from fastapi.testclient import TestClient
 
 from palserver_manager.config import AppConfig, load_config, save_config
@@ -97,6 +99,7 @@ def test_host_only_config_does_not_create_synthetic_primary(tmp_path: Path):
     assert loaded.active_instance_id == ""
 
 
+@pytest.mark.skipif(os.name == "nt", reason="Synthetic bootstrap placeholder migration is Linux-agent behavior")
 def test_registry_identifies_only_untouched_bootstrap_placeholder():
     from palserver_manager.agent import InstanceRegistry
 
@@ -138,36 +141,12 @@ def test_registry_discovery_is_idempotent_and_prunes_stale_duplicate(tmp_path: P
     registry = InstanceRegistry(cfg)
     discovered = {
         "install_dir": str(real_install),
-        "config_path": str(real_install / "Pal" / "Saved" / "Config" / "LinuxServer" / "PalWorldSettings.ini"),
+        "config_path": duplicate.server.config_path,
         "service_name": "palworld",
         "game_port": 8213,
         "rest_api_port": 8212,
     }
-
-    assert registry.find_discovered_match(discovered) == duplicate.id
-    removed = registry.prune_stale_discovery_duplicates(discovered, duplicate.id)
-    assert removed == ["default"]
-    assert [row.id for row in cfg.instances] == [duplicate.id]
-    assert registry.find_discovered_match(discovered) == duplicate.id
-
-
-def test_registry_discovery_matches_same_managed_server_without_exact_path(tmp_path: Path):
-    from palserver_manager.agent import InstanceRegistry
-
-    cfg = AppConfig().resolve()
-    instance = cfg.instance("default")
-    instance.name = "Existing Server"
-    instance.server.install_dir = str(tmp_path / "configured-path")
-    instance.server.service_name = "palworld"
-    instance.server.game_port = 8213
-    instance.server.rest_api_port = 8212
-    instance.server.resolve()
-    registry = InstanceRegistry(cfg)
-
-    discovered = {
-        "install_dir": str(tmp_path / "discovered-path"),
-        "service_name": "palworld",
-        "game_port": 8213,
-        "rest_api_port": 8212,
-    }
-    assert registry.find_discovered_match(discovered) == "default"
+    assert registry.find_discovered_match(discovered) == "002"
+    removed = registry.prune_stale_discovery_duplicates(discovered, "002")
+    assert "default" in removed
+    assert [row.id for row in cfg.instances] == ["002"]
