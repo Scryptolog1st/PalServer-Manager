@@ -1,4 +1,0 @@
-[console_scripts]
-palserver-agent = palserver_manager.agent:main
-palserver-gui = palserver_manager.gui:main
-palserver-manager = palserver_manager.cli:main
