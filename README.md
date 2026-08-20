@@ -1,5 +1,12 @@
 # PalServer Manager
 
+[![CI](https://github.com/Scryptolog1st/PalServer-Manager/actions/workflows/ci.yml/badge.svg?branch=main)](https://github.com/Scryptolog1st/PalServer-Manager/actions/workflows/ci.yml)
+![Version](https://img.shields.io/badge/version-0.7.0-blue)
+![Python](https://img.shields.io/badge/python-3.11%2B-blue)
+![Platforms](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-lightgrey)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+![Status](https://img.shields.io/badge/status-alpha-orange)
+
 **Unofficial Palworld dedicated-server administration for Windows and Linux.**
 
 PalServer Manager combines a local server controller, a secure remote agent, a paginated terminal manager, and a real PySide6 desktop GUI. It is designed so the management computer does **not** need to be on the same LAN as the Palworld host.
@@ -436,7 +443,7 @@ python -m pytest
 
 ## Status
 
-This release is **0.1.0 alpha**. The architecture and major features are implemented, but public distribution should be preceded by real Palworld integration testing on both Windows and Linux hosts.
+This release is **0.7.0 alpha**. The architecture and major features are implemented, but public distribution should be preceded by real Palworld integration testing on both Windows and Linux hosts.
 
 ## Multi-instance server management
 
