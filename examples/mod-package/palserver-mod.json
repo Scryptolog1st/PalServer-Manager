@@ -1,0 +1,14 @@
+{
+  "id": "example-mod",
+  "name": "Example Managed Mod",
+  "version": "1.0.0",
+  "runtime": "ue4ss",
+  "type": "generic",
+  "server_required": true,
+  "client_required": true,
+  "ue4ss_mod_name": "ExampleMod",
+  "compatibility": {
+    "palworld": "1.0.x",
+    "ue4ss": ">=1.0.0"
+  }
+}

@@ -1,0 +1,21 @@
+[Unit]
+Description=PalServer Manager Agent
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+Environment=PALSERVER_MANAGER_CONFIG=/etc/palserver-manager/config.json
+ExecStart=/opt/palserver-manager/venv/bin/palserver-agent --host 127.0.0.1 --port 8765
+Restart=on-failure
+RestartSec=5
+
+# The agent needs permission to control the configured Palworld service and
+# write the Palworld install/save directories. The simple installer runs it as
+# root. Advanced deployments should use a dedicated user plus narrowly scoped
+# sudo/file ACLs.
+User=root
+Group=root
+
+[Install]
+WantedBy=multi-user.target

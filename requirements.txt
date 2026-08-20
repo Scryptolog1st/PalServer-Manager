@@ -1,0 +1,6 @@
+requests>=2.32
+psutil>=6.0
+rich>=13.9
+fastapi>=0.115
+uvicorn[standard]>=0.32
+PySide6>=6.8

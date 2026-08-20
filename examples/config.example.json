@@ -1,0 +1,49 @@
+{
+  "server": {
+    "install_dir": "/opt/palworld",
+    "steamcmd_path": "/usr/games/steamcmd",
+    "steam_user": "palworld",
+    "service_name": "palworld",
+    "launch_args": ["-useperfthreads", "-NoAsyncLoadingThread", "-UseMultithreadForDS"],
+    "config_path": "/opt/palworld/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini",
+    "save_dir": "/opt/palworld/Pal/Saved/SaveGames",
+    "backup_dir": "/opt/palworld-backups",
+    "rest_api_host": "127.0.0.1",
+    "rest_api_port": 8212,
+    "rest_api_username": "admin",
+    "admin_password": "CHANGE_ME",
+    "game_port": 8211
+  },
+  "backup": {"enabled": true, "interval_minutes": 120, "retention_count": 30},
+  "updates": {"auto_check": true, "auto_install": false, "only_when_empty": true},
+  "agent": {"bind_host": "127.0.0.1", "port": 8765, "token": "GENERATED_ON_FIRST_RUN"},
+  "connection": {"mode": "local"},
+  "health": {"cpu_warning": 85, "cpu_critical": 95, "ram_warning": 85, "ram_critical": 95},
+  "active_instance_id": "default",
+  "instances": [
+    {
+      "id": "default",
+      "name": "Primary Server",
+      "enabled": true,
+      "server": {
+        "install_dir": "/opt/palworld",
+        "steamcmd_path": "/usr/games/steamcmd",
+        "steam_user": "palworld",
+        "service_name": "palworld",
+        "launch_args": ["-useperfthreads", "-NoAsyncLoadingThread", "-UseMultithreadForDS"],
+        "config_path": "/opt/palworld/Pal/Saved/Config/LinuxServer/PalWorldSettings.ini",
+        "save_dir": "/opt/palworld/Pal/Saved/SaveGames",
+        "backup_dir": "/opt/palworld-backups",
+        "rest_api_host": "127.0.0.1",
+        "rest_api_port": 8212,
+        "rest_api_username": "admin",
+        "admin_password": "CHANGE_ME",
+        "game_port": 8211,
+        "app_id": "2394010"
+      },
+      "backup": {"enabled": true, "interval_minutes": 120, "retention_count": 30, "backup_before_update": true, "backup_before_restore": true},
+      "updates": {"auto_check": true, "check_interval_minutes": 60, "auto_install": false, "only_when_empty": true, "maintenance_start": "04:00", "maintenance_end": "05:00"},
+      "health": {"cpu_warning": 85, "cpu_critical": 95, "ram_warning": 85, "ram_critical": 95, "disk_warning": 85, "disk_critical": 95, "stale_backup_hours": 6}
+    }
+  ]
+}

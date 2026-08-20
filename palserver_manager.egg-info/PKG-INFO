@@ -1,3 +1,38 @@
+Metadata-Version: 2.4
+Name: palserver-manager
+Version: 0.7.0
+Summary: Unofficial cross-platform Palworld dedicated server manager with local and remote administration.
+Author: PalServer Manager contributors
+License: MIT
+Classifier: Development Status :: 3 - Alpha
+Classifier: Environment :: Console
+Classifier: Environment :: Win32 (MS Windows)
+Classifier: License :: OSI Approved :: MIT License
+Classifier: Operating System :: Microsoft :: Windows
+Classifier: Operating System :: POSIX :: Linux
+Classifier: Programming Language :: Python :: 3.11
+Classifier: Topic :: System :: Systems Administration
+Requires-Python: >=3.11
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: requests>=2.32
+Requires-Dist: psutil>=6.0
+Requires-Dist: rich>=13.9
+Provides-Extra: gui
+Requires-Dist: PySide6>=6.8; extra == "gui"
+Provides-Extra: agent
+Requires-Dist: fastapi>=0.115; extra == "agent"
+Requires-Dist: uvicorn[standard]>=0.32; extra == "agent"
+Provides-Extra: build
+Requires-Dist: pyinstaller>=6.11; extra == "build"
+Provides-Extra: dev
+Requires-Dist: pytest>=8.3; extra == "dev"
+Provides-Extra: all
+Requires-Dist: PySide6>=6.8; extra == "all"
+Requires-Dist: fastapi>=0.115; extra == "all"
+Requires-Dist: uvicorn[standard]>=0.32; extra == "all"
+Dynamic: license-file
+
 # PalServer Manager
 
 **Unofficial Palworld dedicated-server administration for Windows and Linux.**

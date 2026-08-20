@@ -1,0 +1,36 @@
+name: Bug report
+description: Report a reproducible PalServer Manager problem
+title: "[Bug]: "
+labels: [bug]
+body:
+  - type: dropdown
+    id: host-os
+    attributes:
+      label: Palworld server OS
+      options: [Linux, Windows]
+    validations:
+      required: true
+  - type: dropdown
+    id: client-os
+    attributes:
+      label: Manager client OS
+      options: [Linux, Windows]
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: PalServer Manager version
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs
+      description: Remove tokens, passwords, public IPs and private keys before posting.

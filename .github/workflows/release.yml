@@ -1,0 +1,39 @@
+name: Build Release
+
+on:
+  workflow_dispatch:
+  push:
+    tags: ['v*']
+
+jobs:
+  windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade pip
+      - run: python -m pip install -e ".[all,build]"
+      - shell: powershell
+        run: .\scripts\build-windows.ps1
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PalServerManager-Windows
+          path: |
+            dist/PalServerManager/**
+            dist/PalServerAgent/**
+
+  python-package:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python -m pip install --upgrade build
+      - run: python -m build
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Python-Packages
+          path: dist/*
